@@ -308,3 +308,11 @@ addTwoNums(specificNum, specificNum); // returned number is 84
 addTwoNums(specificNum, randomNum); 
 
 addTwoNums(getNumber(), getNumber())
+
+
+
+if (1 > 0){
+    let x = 2;
+    console.log(x)
+}
+console.log(x)
