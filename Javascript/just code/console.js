@@ -316,3 +316,83 @@ if (1 > 0){
     console.log(x)
 }
 console.log(x)
+
+
+
+
+
+
+var a = [1, 2];
+var b = [2, 3];
+
+console.log(a+b)
+
+
+
+
+
+
+class Teacher{
+    greeting(){
+        console.log("Hello, I am a teacher");
+    }
+}
+
+class Math_teacher extends Teacher{
+    subject(){
+        super.greeting();
+        console.log('Math');
+    }
+}
+
+class History_teacher extends Teacher{
+    subject(){
+        super.greeting();
+        console.log("History");
+    }
+}
+
+var teacher = new Teacher();
+var math_teacher = new Math_teacher();
+var history_teacher = new History_teacher();
+
+teacher.greeting();
+math_teacher.subject();
+history_teacher.subject();
+
+
+
+
+
+
+
+class Train{
+    constructor(color, lightsOn){
+        this.color = color;
+        this.lightsOn = lightsOn;
+    }
+    toggleLights() {
+        this.lightsOn = !this.lightsOn;
+    }
+    lightsStatus() {
+        console.log('Lights on?', this.lightsOn);
+    }
+    getSelf() {
+        console.log(this);
+    }
+    getPrototype() {
+        var proto = Object.getPrototypeOf(this);
+        console.log(proto);
+    }
+}
+var myFirstTrain = new Train('red', false);
+var MySecondTrain = new Train('red', false);
+var myThirdTrain = new Train('red', false);
+var train4 = new Train('red', false);
+
+train4.toggleLights(); // undefined
+train4.lightsStatus(); // Lights on? true
+train4.getSelf(); // Train {color: 'red', lightsOn: true}
+train4.getPrototype(); // {constructor: f, toggleLights: f, ligthsStatus: f, getSelf: f, getPrototype: f}
+
+
