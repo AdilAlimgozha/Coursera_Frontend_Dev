@@ -640,3 +640,67 @@ cuddles.makeSound(true); // purr, Roar!
 
 
 
+
+function testBracketsDynamicAccess() {
+    var dynamicKey;
+    if(Math.random() > 0.5) {
+      dynamicKey = "speed";
+     }else{
+       dynamicKey = "color";
+     }
+  
+      var drone = {
+        speed: 15,
+        color: "orange"
+      }
+  
+      console.log(drone[dynamicKey]);
+  }
+  testBracketsDynamicAccess();
+
+
+
+
+
+
+
+
+console.log(`Hello,
+World
+!
+`)
+
+
+
+
+
+
+let a = [1, 2, 3, 4, 5];
+console.log(...a);
+
+
+
+let [] = a;
+let [one, two, ...otherNum] = a;
+console.log();
+
+function addTaxPrices(taxRate, ...itemsBought){
+    return itemsBought.map(item => taxRate * item)
+}
+console.log(addTaxPrices(1.1, 2, 3, 4, 5, 6))
+
+
+
+function sortRestArgs(...theArgs) {
+    const sortedArgs = theArgs.sort();
+    return sortedArgs;
+  }
+  
+console.log(sortRestArgs(5, 3, 7, 1));
+
+
+let a = 10;
+function func(){
+    console.log(a);
+}
+func()
