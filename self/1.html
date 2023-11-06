@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Doc</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/self/style.css">
+
 </head>
 <body>
-    <div class="parent">
-        fasfa
-        fasfasfas
-        fsafas<br>
-        dasfas
-        <div class="child">
-            sdfjsadfhnsdafhhnsad <br>
-            dsafsdagdagasdgdd
+    <div class="calculator">
+        <div class="result_area">
+            <h1 class="result">0</h1>
         </div>
-        fasfasfasfasfas
-        fdsafsda
+        <div class="buttons_area">
+            <button type="button" class="btn">C</button>
+            <button type="button" class="btn">del</button>
+            <button type="button" class="btn">/</button>
+            <button type="button" class="btn" onclick = "click_operations('7')">7</button>
+            <button type="button" class="btn" onclick = "click_operations('8')">8</button>
+            <button type="button" class="btn" onclick = "click_operations('9')">9</button>
+            <button type="button" class="btn">*</button>
+            <button type="button" class="btn" onclick = "click_operations('4')">4</button>
+            <button type="button" class="btn" onclick = "click_operations('5')">5</button>
+            <button type="button" class="btn" onclick = "click_operations('6')">6</button>
+            <button type="button" class="btn">-</button>
+            <button type="button" class="btn" onclick = "click_operations('1')">1</button>
+            <button type="button" class="btn" onclick = "click_operations('2')">2</button>
+            <button type="button" class="btn" onclick = "click_operations('3')">3</button>
+            <button type="button" class="btn">+</button>
+            <button type="button" class="btn">+/-</button>
+            <button type="button" class="btn" onclick = "click_operations('0')">0</button>
+            <button type="button" class="btn">,</button>
+            <button type="button" class="btn">=</button>
+        </div>
     </div>
+    
+    <script type="text/javascript" src="/self/main.js"></script>
 </body>
 </html>
