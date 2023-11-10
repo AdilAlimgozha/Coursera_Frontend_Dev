@@ -1,8 +1,12 @@
 function click_operations(name){
     if (result.innerText == 0){
-        result.innerText = name;
+        if (result.innerText == '0.'){
+            result.innerText += name;
+        }else{
+            result.innerText = name;
+        }
     }else{
-        result.innerText += name
+        result.innerText += name;
     }
     n2 = result.innerText;
 }
@@ -82,6 +86,10 @@ function delete_num(){
     result.innerText = result.innerText.slice(0, result.innerText.length - 1);
 }
 
+function power(){
+    result.innerText = (parseFloat(result.innerText) ** 2).toString();
+}
+
 let n1 = false;
 let n2 = false;
 let action = false;
@@ -90,12 +98,14 @@ let result = document.querySelector('.result'); // get result
 
 const buttons = document.querySelectorAll(".btn");     //pick all buttons
 
+
 buttons[0].addEventListener('click', clean)
-buttons[2].addEventListener('click', divide);
-buttons[6].addEventListener('click', mult);
-buttons[10].addEventListener('click', minus);
-buttons[14].addEventListener('click', plus);
-buttons[18].addEventListener('click', equals);
-buttons[15].addEventListener('click', change_sign);
-buttons[17].addEventListener('click', dectimal_num);
 buttons[1].addEventListener('click', delete_num);
+buttons[2].addEventListener('click', power);
+buttons[3].addEventListener('click', divide);
+buttons[7].addEventListener('click', mult);
+buttons[11].addEventListener('click', minus);
+buttons[15].addEventListener('click', plus);
+buttons[16].addEventListener('click', change_sign);
+buttons[18].addEventListener('click', dectimal_num);
+buttons[19].addEventListener('click', equals);

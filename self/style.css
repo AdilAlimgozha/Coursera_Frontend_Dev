@@ -5,9 +5,19 @@
     font-size: 1.5em;
 }
 .btn{
+    display: inline-block;
+    width: 10%;
     font-size: 1.5em;
+    height: 1.8em;
 }
 .row{
-    margin: 1%;
-    justify-content: center;
+    margin: 2%;
+
+}
+sup{
+    font-size: 0.5em;
+}
+
+.btn:hover{
+    background-color: rgb(179, 255, 240);
 }
