@@ -1,0 +1,13 @@
+.calculator{
+    text-align: center;
+}
+.result_area{
+    font-size: 1.5em;
+}
+.btn{
+    font-size: 1.5em;
+}
+.row{
+    margin: 1%;
+    justify-content: center;
+}
