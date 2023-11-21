@@ -6,8 +6,9 @@ class To_do{
 
     add_action(){
         ctr += 1
-        let div = document.createElement('div')
+        let div = document.createElement('div');
         div.setAttribute('id', `#single_check_box${ctr}`);
+        div.setAttribute('class', `checkbox_div`)
         document.querySelector('.actions_fieldset').appendChild(div); 
         let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
@@ -26,7 +27,7 @@ class To_do{
         }*/
     }
 
-    cross_action(){
+    del_action(){
         
     }
 
@@ -35,8 +36,7 @@ class To_do{
 
 let action = document.querySelector(".input");
 let button = document.querySelector(".btn");
-let checkboxes = document.querySelector(".checkbox");
-/*let checkboxes = document.querySelector("")*/
+let checkboxes = document.getElementsByClassName('checkbox')
 let ctr = 0;
 
 
@@ -70,9 +70,20 @@ function new_action(){
     to_do.add_action();
     action.value = "";
     console.log(checkboxes);
-} 
-
-
-
+}
 
 button.addEventListener('click', new_action);
+
+for (var i = 0; i < checkboxes.length; i++){
+    checkboxes[i].addEventListener('change', function(event){
+        let checkbox = event.target;
+
+        if (checkbox.checked) {
+            console.log("Checkbox is checked");
+            checkbox.labels[0].innerHTML = '<s>' + checkbox.labels[0].innerText + '</s>';
+        }else {
+            console.log("Checkbox is not checked");
+            checkbox.labels[0].innerHTML = checkbox.labels[0].innerText;
+        }
+    });
+}
