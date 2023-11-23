@@ -6,32 +6,33 @@ class To_do{
 
     add_action(){
         ctr += 1
+        let div_outer = document.createElement('div');
+        div_outer.setAttribute('id', `checkbox_div_outer${ctr}`);
+        div_outer.setAttribute('class', `checkbox_div_outer`);
+        document.querySelector('.actions_fieldset').appendChild(div_outer);
+
         let div = document.createElement('div');
         div.setAttribute('id', `#single_check_box${ctr}`);
         div.setAttribute('class', `checkbox_div`)
-        document.querySelector('.actions_fieldset').appendChild(div); 
+        document.querySelector(`#checkbox_div_outer${ctr}`).appendChild(div);
+
         let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
         checkbox.setAttribute('id', `action${ctr}`);
         checkbox.setAttribute('class', `checkbox`);
         document.getElementById(`#single_check_box${ctr}`).appendChild(checkbox);
+
         let label = document.createElement('label');
         label.setAttribute('for', `action${ctr}`);
         label.innerText = this.action;
         document.getElementById(`#single_check_box${ctr}`).appendChild(label);
 
-
-        /*input.checkbox{
-            width : ;
-            height : /*desired height;
-        }*/
+        let del = document.createElement('button');
+        del.innerText = 'delete';
+        del.setAttribute('id', `del_button${ctr}`);
+        del.setAttribute('class', 'del_button');
+        document.querySelector(`#checkbox_div_outer${ctr}`).appendChild(del);
     }
-
-    del_action(){
-        
-    }
-
-    
 }
 
 let action = document.querySelector(".input");
@@ -60,16 +61,18 @@ if (storedValue) {
 }
 
 function new_action(){
-    let to_do = new To_do(action.value);
-    let cachedArrayinFunction = JSON.parse(localStorage.getItem('ToDoList'));
-    if (!Array.isArray(cachedArrayinFunction)) {
-        cachedArrayinFunction = [];
+    if (action.value != ""){
+        let to_do = new To_do(action.value);
+        let cachedArrayinFunction = JSON.parse(localStorage.getItem('ToDoList'));
+        if (!Array.isArray(cachedArrayinFunction)) {
+            cachedArrayinFunction = [];
+        }
+        cachedArrayinFunction.push(action.value);
+        localStorage['ToDoList'] = JSON.stringify(cachedArrayinFunction);
+        to_do.add_action();
+        action.value = "";
+        console.log(checkboxes);
     }
-    cachedArrayinFunction.push(action.value);
-    localStorage['ToDoList'] = JSON.stringify(cachedArrayinFunction);
-    to_do.add_action();
-    action.value = "";
-    console.log(checkboxes);
 }
 
 button.addEventListener('click', new_action);
@@ -78,10 +81,10 @@ for (var i = 0; i < checkboxes.length; i++){
     checkboxes[i].addEventListener('change', function(event){
         let checkbox = event.target;
 
-        if (checkbox.checked) {
+        if (checkbox.checked){
             console.log("Checkbox is checked");
             checkbox.labels[0].innerHTML = '<s>' + checkbox.labels[0].innerText + '</s>';
-        }else {
+        }else{
             console.log("Checkbox is not checked");
             checkbox.labels[0].innerHTML = checkbox.labels[0].innerText;
         }

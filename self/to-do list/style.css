@@ -62,3 +62,31 @@ body{
     text-align: left;
     font-size: 1.5em;
 }
+
+.del_button{
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    border-radius: 20%;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Edu TAS Beginner';
+    font-size: 0.6em;
+    font-weight: 300;
+    line-height: 2.5;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.del_button:hover{
+    background: linear-gradient(to bottom right, #d11b39, #e56719);
+}
+
+.del_button:active{
+	box-shadow: inset 0px 4px 1px #7215a3, 0px 2px 0px 0px #6a1099, 0px 5px 3px #999;
+}
+
+.checkbox_div_outer{
+    display: flex;
+    justify-content: space-between;
+}
