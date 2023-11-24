@@ -37,7 +37,9 @@ class To_do{
 
 let action = document.querySelector(".input");
 let button = document.querySelector(".btn");
-let checkboxes = document.getElementsByClassName('checkbox')
+let checkboxes = document.getElementsByClassName('checkbox');
+let del_buttons = document.getElementsByClassName("del_button");
+let divs = document.getElementsByClassName("checkbox_div_outer");
 let ctr = 0;
 
 
@@ -71,22 +73,56 @@ function new_action(){
         localStorage['ToDoList'] = JSON.stringify(cachedArrayinFunction);
         to_do.add_action();
         action.value = "";
-        console.log(checkboxes);
-    }
+        checkboxes = document.getElementsByClassName('checkbox');
+        del_buttons = document.getElementsByClassName("del_button");
+        divs = document.getElementsByClassName("checkbox_div_outer");
+        cross_del()
+        }
 }
 
 button.addEventListener('click', new_action);
+cross_del()
 
-for (var i = 0; i < checkboxes.length; i++){
-    checkboxes[i].addEventListener('change', function(event){
-        let checkbox = event.target;
+function cross_del(){
+    for (var i = 0; i < checkboxes.length; i++){
+        checkboxes[i].addEventListener('change', function(event){
+            let checkbox = event.target;
 
-        if (checkbox.checked){
-            console.log("Checkbox is checked");
-            checkbox.labels[0].innerHTML = '<s>' + checkbox.labels[0].innerText + '</s>';
-        }else{
-            console.log("Checkbox is not checked");
-            checkbox.labels[0].innerHTML = checkbox.labels[0].innerText;
-        }
-    });
+            if (checkbox.checked){
+                checkbox.labels[0].innerHTML = '<s>' + checkbox.labels[0].innerText + '</s>';
+            }else{
+                checkbox.labels[0].innerHTML = checkbox.labels[0].innerText;
+            }
+        });
+    }
+
+    for (var i = 0; i < del_buttons.length; i++){
+        del_buttons[i].addEventListener('click', function(event){
+            let button = event.target;
+            let btn_id_num = button.id.replace(/[^0-9]/g, '');
+
+            for (j = 0; j < divs.length; j++){
+                let div_id_num = divs[j].id.replace(/[^0-9]/g, '');
+
+                if (btn_id_num == div_id_num){
+                    let text = checkboxes[j].labels[0].innerText;
+                    divs[j].remove();
+                    button.remove();
+                    let cachedArray = JSON.parse(localStorage.getItem('ToDoList'));
+                    if (cachedArray.includes(text)){
+                        
+                        for (let k = 0; k < cachedArray.length; k++){ 
+                            if (cachedArray[k] == text) { 
+                                cachedArray.splice(k, 1); 
+                            } 
+                        } 
+
+                    }
+                    console.log(cachedArray);
+                    localStorage['ToDoList'] = JSON.stringify(cachedArray);
+                    break;
+                }
+            }
+        })
+    }
 }
